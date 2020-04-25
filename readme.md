@@ -66,9 +66,9 @@ A class with min and max properties and exposes methods for determining if a val
 
 ##### Parameters
 
--   `min` **[number][7]** The minimum value of the range
+-   `min` **[number][7]** The minimum value of the range (optional, default `Number.MIN_SAFE_INTEGER`)
 
--   `max` **[number][7]** The maximum value of the range
+-   `max` **[number][7]** The maximum value of the range (optional, default `Number.MAX_SAFE_INTEGER`)
 
 #### isInside
 

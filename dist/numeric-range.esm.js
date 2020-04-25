@@ -1,12 +1,24 @@
+import assertArgs from '@bemoje/assert-args';
+import assertType from '@bemoje/assert-type';
+
 /**
  * A class with min and max properties and exposes methods for determining if a value is inside or outside the range between the min and max values.
  */
 class NumericRange {
 	/**
-	 * @param {number} min - The minimum value of the range
-	 * @param {number} max - The maximum value of the range
+	 * @param {number} [min=Number.MIN_SAFE_INTEGER] - The minimum value of the range
+	 * @param {number} [max=Number.MAX_SAFE_INTEGER] - The maximum value of the range
 	 */
-	constructor(min, max) {
+	constructor(min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
+		// try corce to number
+		min = Number(min);
+		max = Number(max);
+
+		// check type
+		assertType(Number, min);
+		assertType(Number, max);
+
+		// set properties
 		this.min = min;
 		this.max = max;
 	}
@@ -16,6 +28,8 @@ class NumericRange {
 	 * @returns {boolean} boolean
 	 */
 	isInside(value) {
+		assertArgs(value);
+		assertType(Number, value);
 		return value <= this.max && value >= this.min
 	}
 
@@ -24,6 +38,8 @@ class NumericRange {
 	 * @returns {boolean} boolean
 	 */
 	isOutside(value) {
+		assertArgs(value);
+		assertType(Number, value);
 		return value > this.max || value < this.min
 	}
 }
